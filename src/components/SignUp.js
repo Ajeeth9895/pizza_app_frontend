@@ -49,7 +49,6 @@ function SignUp() {
       })
 
       if (res.status === 201) {
-        sessionStorage.setItem('token', res.data.token)
         toast.success(res.data.message)
         navigate('/login')
       }

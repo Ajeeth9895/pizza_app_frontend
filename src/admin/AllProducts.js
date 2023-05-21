@@ -80,7 +80,7 @@ function AllProducts() {
                                 return (
                                     <tr key={i}>
                                         <td>{i + 1}</td>
-                                        <td>{e.product_id}</td>
+                                        <td>{e._id}</td>
                                         <td>{e.category}</td>
                                         <td>{e.name}</td> 
                                         <td>{e.description}</td>

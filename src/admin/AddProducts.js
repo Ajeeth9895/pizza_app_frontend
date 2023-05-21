@@ -1,14 +1,30 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { url } from "../App";
 import { toast } from "react-toastify";
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import { useNavigate, useParams } from 'react-router-dom';
 
 function AddProducts() {
 
-  let token = sessionStorage.getItem('token')
+  //AddProduct and EditProduct has configured in same page
+
+  let token = sessionStorage.getItem('token');
+  let {id} = useParams();
+  let [isValid, setIsValid] = useState(false);
+  let navigate = useNavigate()
+
+   //set initial values of the products
+  let [initialValues,setInitialValues] = useState({
+    category: "",
+    imgurl: "",
+    name: "",
+    description: "",
+    price: ""
+  })
+ 
 
   // formik validation
   let userSchema = Yup.object().shape({
@@ -19,7 +35,7 @@ function AddProducts() {
     price: Yup.string().required("Required")
   });
 
-  //send data to save new product
+  //Create new product
   const handleAddProduct = async (values) => {
     try {
       let res = await axios.post(`${url}/admin/create-product`, {
@@ -43,23 +59,67 @@ function AddProducts() {
 
   }
 
+  //getting data
+  let getData = async() => {
+    try{
+        let res = await axios.post(`${url}/admin/getSingleProduct`,{id})
+        //set value for edit product and pre populate
+        setInitialValues(res.data.values);
+        setIsValid(true);
+       }catch(error){
+        console.log(error);
+       }
+  };
+
+
+  //update data
+  let updateData = async(values)=>{
+    try {
+        let res = await axios.put(`${url}/admin/updateProduct/${id}`,{values})
+
+        if(res.status===201){
+           toast.success(res.data.message)
+            navigate("/adminHome/all-products");
+        }
+    } catch (error) {
+        console.log(error)
+    }
+  }
+
+  console.log(initialValues);
+
+  useEffect(() => {
+    if(id){
+      //for edit the product details
+    getData();
+
+    }else{
+        setIsValid(true);
+    }
+  },[]);
+
 
   return (
     <div>
-      <Formik
-        initialValues={{
-          category: "",
-          imgurl: "",
-          name: "",
-          description: "",
-          price: ""
-        }}
+    {/*check isValid true or false  */}
+       {isValid?<Formik
+        initialValues={initialValues}
 
         validationSchema={userSchema}
 
         // send entered data do handleAddProduct function
         onSubmit={(values) => {
-          handleAddProduct(values)
+          if(id){
+
+            //for edit product we should update data
+            updateData(values) 
+
+          }else{
+
+            //for creating new product
+            handleAddProduct(values)
+          }
+         
         }}
       >
         {({ errors, touched }) => (
@@ -117,6 +177,8 @@ function AddProducts() {
           </div >
         )}
       </Formik>
+      :
+      <div style={{"textAlign":"center"}}><b>Loading...</b></div>}
 
     </div>
   )

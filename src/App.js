@@ -17,7 +17,7 @@ import AllProducts from './admin/AllProducts';
 import OrderStatus from './admin/OrderStatus';
 
 
-export const url = 'https://pizza-app-9z4v.onrender.com'
+export const url = 'https://pizza-app-dlzv.onrender.com'
 
 function App() {
   return <>
@@ -37,6 +37,7 @@ function App() {
         <Route path='/adminHome' element={<AdminHome />}>
              <Route path='all-orders' element={<AllOrders/>} />
              <Route path='add-products' element={<AddProducts/>} />
+             <Route path='edit-products/:id' element={<AddProducts/>} />
              <Route path='all-products' element={<AllProducts/>} />
              <Route path='order-status' element={<OrderStatus/>} />
         </Route>

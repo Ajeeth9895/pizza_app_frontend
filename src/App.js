@@ -18,7 +18,7 @@ import AllProducts from './admin/AllProducts';
 import OrderStatus from './admin/OrderStatus';
 
 
-export const url = 'http://localhost:8000'
+export const url = 'https://pizza-app-dlzv.onrender.com'
 
 function App() {
   return <>

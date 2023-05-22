@@ -65,7 +65,9 @@ function AddProducts() {
         let res = await axios.post(`${url}/admin/getSingleProduct`,{id})
         //set value for edit product and pre populate
         setInitialValues(res.data.values);
+
         setIsValid(true);
+
        }catch(error){
         console.log(error);
        }
@@ -86,7 +88,7 @@ function AddProducts() {
     }
   }
 
-  console.log(initialValues);
+  
 
   useEffect(() => {
     if(id){
@@ -110,12 +112,9 @@ function AddProducts() {
         // send entered data do handleAddProduct function
         onSubmit={(values) => {
           if(id){
-
             //for edit product we should update data
             updateData(values) 
-
           }else{
-
             //for creating new product
             handleAddProduct(values)
           }

@@ -72,8 +72,9 @@ function AdminLogin() {
                                         <div style={{ color: "red" }}>{errors.password}</div>
                                     ) : null}
                                 </div>
-                                <div className='d-flex justify-content-center p-3'>
+                                <div className='d-flex justify-content-between p-3'>
                                     <Button type="submit" variant="outline-secondary">Admin login</Button>
+                                    <Button type="submit" variant="outline-secondary" onClick={()=>navigate('/adminSignUp')}>Admin SignUp</Button>
                                 </div>
                                 <div className='m-2 p-3'>
                                     <h6 className=' text-warning text-center'>Customer please visit customer login</h6>

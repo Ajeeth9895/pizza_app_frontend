@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import Login from "../src/components/Login";
 import AdminLogin from './admin/AdminLogin';
+import AdminSignUp from './admin/AdminSignUp'
 import AdminHome from './admin/AdminHome';
 import SignUp from './components/SignUp';
 import ForgetPassword from './components/ForgetPassword';
@@ -17,7 +18,7 @@ import AllProducts from './admin/AllProducts';
 import OrderStatus from './admin/OrderStatus';
 
 
-export const url = 'https://pizza-app-dlzv.onrender.com'
+export const url = 'http://localhost:8000'
 
 function App() {
   return <>
@@ -25,6 +26,7 @@ function App() {
       <Routes>
         <Route path='/login' element={<Login />} />
         <Route path='/adminLogin' element={<AdminLogin />} />
+        <Route path='/adminSignUp' element={<AdminSignUp />} />
         <Route path='/signUp' element={<SignUp />} />
         <Route path='/home' element={<Home />} />
         <Route path='/menu' element={<Menu />} />

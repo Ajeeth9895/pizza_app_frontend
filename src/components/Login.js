@@ -27,6 +27,8 @@ function Login() {
                 password:values.password
             })
 
+             console.log(res.data);
+
             if (res.status === 200) {
                 sessionStorage.setItem('token', res.data.token)
                 sessionStorage.setItem('name', res.data.user.firstName)

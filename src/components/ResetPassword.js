@@ -14,10 +14,11 @@ function ResetPassword() {
     const { id, token } = useParams();
     const navigate = useNavigate()
 
-     //token validation after the link clicked from email
+
+    //token validation after the link clicked from email
     const tokenValidation = async () => {
         try {
-            let res = await axios.get(`${url}/users/admin-reset-password/${id}/${token}`)
+            let res = await axios.get(`${url}/users/reset-password/${id}/${token}`)
 
             if (res.status === 200) {
                 toast.success(res.data.message)
@@ -25,8 +26,8 @@ function ResetPassword() {
 
 
         } catch (error) {
-           toast.error(error.response.data.message);
-           navigate('/forgetPassword')
+            toast.error(error.response.data.message);
+            navigate('/forgetPassword')
         }
     }
 
@@ -40,12 +41,12 @@ function ResetPassword() {
         confirmPassword: Yup.string().oneOf([Yup.ref("password"), null], "confirm password should match with password").required("Required"),
     });
 
-   //validating link has received in email
+    //    validating link has received in email
     useEffect(() => {
         tokenValidation();
     }, [])
 
-   
+
     //function for save new password 
     const handleNewPassword = async (values) => {
         try {

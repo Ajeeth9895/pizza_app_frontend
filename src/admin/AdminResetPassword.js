@@ -49,7 +49,7 @@ function AdminResetPassword() {
     //function for save new password 
     const handleNewPassword = async (values) => {
         try {
-            let res = await axios.post(`${url}/users/change-password/${id}/${token}`, {
+            let res = await axios.post(`${url}/admin/admin-change-password/${id}/${token}`, {
                 password: values.password
             })
 

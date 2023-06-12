@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FaRupeeSign } from 'react-icons/fa';
 import { Button } from 'react-bootstrap';
 import { RiDeleteBin5Line } from 'react-icons/ri';
-import { deleteCart } from '../redux/cartReducer';
+import { deleteCart } from '../redux/reducer/cartReducer';
 import { useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify"
 import axios from 'axios';
@@ -16,6 +16,7 @@ function AddToCart() {
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
+  console.log(cartProducts );
 
  //Razorpay function to handle payment
   const handleOpenRazoroay = (data) => {

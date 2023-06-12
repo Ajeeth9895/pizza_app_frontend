@@ -77,6 +77,14 @@ function AdminLogin() {
                                     <Button type="submit" variant="outline-secondary" onClick={()=>navigate('/adminSignUp')}>Admin SignUp</Button>
                                 </div>
                                 <div className='m-2 p-3'>
+                                    <h6 className=' text-warning text-center'>Forgot your password ?</h6>
+                                    <div className='d-flex justify-content-center'>
+                                        <Button variant="outline-secondary" onClick={() => navigate('/adminForgot')}>
+                                            forgot-password
+                                        </Button>
+                                    </div>
+                                </div>
+                                <div className='m-2 p-3'>
                                     <h6 className=' text-warning text-center'>Customer please visit customer login</h6>
                                     <div className='d-flex justify-content-center'>
                                         <Button variant="outline-secondary" onClick={() => navigate('/login')}>

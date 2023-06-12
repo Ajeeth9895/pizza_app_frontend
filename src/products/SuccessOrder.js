@@ -4,7 +4,7 @@ import { url } from '../App';
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { clearCart } from '../redux/cartReducer';
+import { clearCart } from '../redux/reducer/cartReducer';
 
 function SuccessOrder() {
 
@@ -46,7 +46,7 @@ function SuccessOrder() {
             },{
                 headers: {
                     Authorization: `Bearer ${token}`,
-                  }
+                   }
             });
 
         } catch (error) {

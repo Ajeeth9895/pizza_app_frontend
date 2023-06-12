@@ -16,9 +16,12 @@ import AllOrders from './admin/AllOrders';
 import AddProducts from './admin/AddProducts';
 import AllProducts from './admin/AllProducts';
 import OrderStatus from './admin/OrderStatus';
+import AdminForgotPassword from './admin/AdminForgotPassword';
+import AdminResetPassword from './admin/AdminResetPassword';
 
 
 export const url = 'https://pizza-app-dlzv.onrender.com'
+
 
 
 function App() {
@@ -37,13 +40,16 @@ function App() {
         <Route path='/forgetPassword' element={<ForgetPassword />} />
         <Route path='/reset-password/:id/:token' element={<ResetPassword />} />
         <Route path='/logout' element={<Home />} />
+
         <Route path='/adminHome' element={<AdminHome />}>
-             <Route path='all-orders' element={<AllOrders/>} />
-             <Route path='add-products' element={<AddProducts/>} />
-             <Route path='edit-products/:id' element={<AddProducts/>} />
-             <Route path='all-products' element={<AllProducts/>} />
-             <Route path='order-status' element={<OrderStatus/>} />
+          <Route path='all-orders' element={<AllOrders />} />
+          <Route path='add-products' element={<AddProducts />} />
+          <Route path='edit-products/:id' element={<AddProducts />} />
+          <Route path='all-products' element={<AllProducts />} />
+          <Route path='order-status' element={<OrderStatus />} />
         </Route>
+        <Route path='/adminForgot' element={<AdminForgotPassword />} />
+        <Route path='/admin-reset-password/:id/:token' element={<AdminResetPassword />} />
 
         <Route path='*' element={<Navigate to='/home' />} />
       </Routes>

@@ -90,6 +90,15 @@ body {
   padding-top: 2em;
 }
 
+.filter-menu {
+  background-color:rgb(151, 190, 187);
+  margin-top: 4.5em;
+  width:50%;
+  border-radius:5em;
+  display: flex;
+  justify-content: center;
+}
+
 .cart-header {
   background-color: lightblue;
   background-repeat: no-repeat;

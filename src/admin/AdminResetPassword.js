@@ -9,7 +9,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
 
-function ResetPassword() {
+function AdminResetPassword() {
 
     const { id, token } = useParams();
     const navigate = useNavigate()
@@ -17,7 +17,7 @@ function ResetPassword() {
      //token validation after the link clicked from email
     const tokenValidation = async () => {
         try {
-            let res = await axios.get(`${url}/users/admin-reset-password/${id}/${token}`)
+            let res = await axios.get(`${url}/admin/admin-reset-password/${id}/${token}`)
 
             if (res.status === 200) {
                 toast.success(res.data.message)
@@ -77,7 +77,7 @@ function ResetPassword() {
                 {({ errors, touched }) => (
                     <div className='container-fluid signUp-head'>
                         <div className='signUp-body mt-5'>
-                            <div className='text-center text-success'><h1>Reset Password</h1></div>
+                            <div className='text-center text-success'><h1>Admin Reset Password</h1></div>
                             <div className='login-header text-center text-danger'><p>Enter your new password</p></div>
                             <Form>
                                 <div className="form-group pt-2">
@@ -103,8 +103,8 @@ function ResetPassword() {
                                 <div className='m-2 p-3'>
                                     <h6 className=' text-warning text-center'>After reset your password please login</h6>
                                     <div className='d-flex justify-content-center'>
-                                        <Button variant="outline-secondary" onClick={() => navigate('/login')}>
-                                            login
+                                        <Button variant="outline-secondary" onClick={() => navigate('/adminLogin')}>
+                                           admin-login
                                         </Button>
                                     </div>
                                 </div>
@@ -118,4 +118,4 @@ function ResetPassword() {
     )
 }
 
-export default ResetPassword
+export default AdminResetPassword;

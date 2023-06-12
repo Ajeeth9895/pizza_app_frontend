@@ -4,7 +4,7 @@ import { Table, Button } from 'react-bootstrap';
 import { url } from '../App';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { clearCart } from '../redux/cartReducer';
+import { clearCart } from '../redux/reducer/cartReducer';
 
 
 
